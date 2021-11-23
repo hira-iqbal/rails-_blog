@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 2021_11_23_072924) do
   create_table "comments", force: :cascade do |t|
     t.string "commenter"
     t.text "body"
-    t.integer "arrticle_id", null: false
+    t.integer "article_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["arrticle_id"], name: "index_comments_on_arrticle_id"
+    t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -36,5 +36,5 @@ ActiveRecord::Schema.define(version: 2021_11_23_072924) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "comments", "arrticles"
+  add_foreign_key "comments", "articles"
 end
