@@ -1,11 +1,9 @@
 <h1>Hello, Rails!</h1>
 <ul>
   <% @articles.each do |article|%>
-    <% unless article.archived? %>
-     <li>
-       Title=> <%= link_to article.title, article %>  Body=><%= link_to article.body, article %><br><br>
-     </li>
-    <% end %>
+   <li>
+     Title=> <%= link_to article.title, article %>  Body=><%= link_to article.body, article %><br><br>
+   </li>
  <% end %>
 </ul>
 <%= link_to "New Article", new_article_path %>
