@@ -1,23 +1,21 @@
 class ArticlesController < ApplicationController
+before_action :set_article, only: [:show, :edit, :update, :destroy]
+http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+
 
   def index
     @articles = Article.all
   end
 
-  def show
-    @article = Article.find(params[:id])
-  end
+  def show; end
 
   def new
     @article = Article.new
   end
 
-  def edit
-    @article = Article.find(params[:id])
-  end
+  def edit; end
 
   def create
-    # @article = Article.new(title: params[:article][:title], body: params[:article][:body])
     @article = Article.new(article_params)
     if @article.save
       redirect_to @article
@@ -27,24 +25,27 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find(params[:id])
     if @article.update(article_params)
-     redirect_to @article
-     else
-     render edit
-   end
+      redirect_to @article
+    else
+      render edit
+    end
   end
 
-  def delete
-    @article = Article.find(params[:id])
-    @article.delete
-    redirect_to root_path
+  def destroy
+    @article.destroy
+    redirect_to articles_path
   end
 
   private
 
-  def article_params
-    params.require(:article).permit(:title, :body)
+  def set_article
+    @article = Article.find(params[:id])
   end
 
+  # params = { article: { title: "ali", body: "body" } }
+
+  def article_params
+    params.require(:article).permit(:title, :body, :status)
+  end
 end
