@@ -1,11 +1,10 @@
 class ArticlesController < ApplicationController
- # child < parent
-before_action :set_article, only: [:show, :edit, :update, :destroy]
-http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
 
 
   def index
-    @articles = Article.all.ordered
+    @articles = Article.ordered
   end
 
   def show; end
@@ -46,8 +45,6 @@ http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :
       redirect_to articles_path, alert: "You cannot edit a public or a private article"
     end
   end
-
-  # params = { article: { title: "ali", body: "body" } }
 
   def article_params
     params.require(:article).permit(:title, :body, :status)
