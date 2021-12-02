@@ -13,6 +13,7 @@ class RolesController < ApplicationController
     @role = Role.new
   end
 
+
   def role_params
     params.require(:role).permit(:name)
   end
