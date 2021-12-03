@@ -8,7 +8,6 @@ class User < ApplicationRecord
  private
 
   def default_role
-
     if self.role.blank?
       if Role.default.any?
         self.role = Role.default.first
