@@ -1,19 +1,10 @@
 Rails.application.routes.draw do
+  get 'session/new'
+  devise_for :users
   root "articles#index"
 
+  resources :users
   resources :articles do
     resources :comments
   end
-
-  # get    '/articles'          => 'articles#index'
-
-  # get    '/articles/new'      => 'articles#new'
-
-  # get    '/articles/:id'      => 'articles#show'
-  # post   '/articles'          => 'articles#create'
-  # get    '/articles/:id/edit' => 'articles#edit'
-  # patch  '/articles/:id'      => 'articles#update'
-  # put    '/articles/:id'      => 'articles#update'
-  # delete '/articles/:id'      => 'articles#destroy'
-
 end
