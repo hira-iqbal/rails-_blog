@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
-before_action :set_article, only: [:show, :edit, :update, :destroy]
-http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
 
 
   def index
-    @articles = Article.all
+    @articles = Article.ordered
   end
 
   def show; end
@@ -40,10 +40,11 @@ http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :
   private
 
   def set_article
-    @article = Article.find(params[:id])
+    @article = Article.archived.find_by(id: params[:id])
+    if @article.nil?
+      redirect_to articles_path, alert: "You cannot edit a public or a private article"
+    end
   end
-
-  # params = { article: { title: "ali", body: "body" } }
 
   def article_params
     params.require(:article).permit(:title, :body, :status)
