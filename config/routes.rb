@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
   root "articles#index"
 
-  resources :users
+  resources :users, except: :create
+  post 'create_user' => 'users#create', as: :create_user
   resources :articles do
     resources :comments
   end
