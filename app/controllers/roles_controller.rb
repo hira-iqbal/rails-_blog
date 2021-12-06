@@ -3,9 +3,9 @@ class RolesController < ApplicationController
   def create
     @role = Role.new(role_params)
     if @role.save
-      redirect_to @role
+      redirect_to @role, notice: "Role is saved successfully."
     else
-      render new
+      render :new
     end
   end
 
