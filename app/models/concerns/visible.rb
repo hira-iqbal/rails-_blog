@@ -1,10 +1,10 @@
 module Visible
   extend ActiveSupport::Concern
 
-  valid_statuses = ['public', 'private', 'archived']
+  STATUSES = ['public', 'private', 'archived']
 
   included do
-    validates :status, inclusion: { in: valid_statuses }
+    validates :status, inclusion: { in: STATUSES }
   end
 
   def archived?

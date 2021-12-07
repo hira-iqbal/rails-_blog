@@ -1,20 +1,41 @@
 <h3>Article Info:</h3>
+<table class="table table-sm">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Article Title</th>
+      <th scope="col">Article Body</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @article.title %></td>
+      <td><%= @article.body %></td>
+    </tr>
+    <tr>
+      <th>Comments </th>
+      <td><%= render @article.comments %></td>
+    </tr>
+   <tr>
+     <button type="button" class="btn btn-secondary"><%=
+      link_to "Destroy", article_path(@article),
+      method: :delete,
+      data: { confirm: "Are you sure?" }%>
+      </button>
+    </tr>
+    <tr>
+     <button type="button" class="btn btn-secondary">
+        <%= link_to "Edit", edit_article_path(@article) %>
+      </button>
+    </tr>
+    <tr>
 
-<p><%= @article.title %></p>
-<p><%= @article.body %></p>
-<%=
-  link_to "Destroy", article_path(@article),
-  method: :delete,
-  data: { confirm: "Are you sure?" }
-%>
- | <%= link_to "Edit", edit_article_path(@article) %>
-<hr>
+    </tr>
+  </tbody>
+</table>
 
-<h2> Comments </h2>
-<%= render @article.comments %>
-<hr>
+
 <h2>add a comment:</h2>
 <%= render 'comments/form' %>
-<hr>
+
 
 
