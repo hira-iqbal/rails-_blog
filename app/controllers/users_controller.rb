@@ -1,29 +1,44 @@
 class UsersController < ApplicationController
+ before_action :authenticate_user!
+ before_action :ensure_admin
+ before_action :set_user, only: [:show,:edit,:update]
 
- def index
-  @user = User.all
- end
-  def show
-    @user = User.find_by(id: params[:id])
+  def index
+     @users = User.all
   end
+
+  def new
+    @user = User.new
+  end
+
+  def show; end
 
   def create
-  end
-
-  def edit
-  end
-
-
-  def update
-    @user = User.find_by(id: params[:id])
-    @role = Role.find_by(role_id: params[:role_id])
-
-    if current_user == "admin"
-      @user.update(user_params)
+    @user = User.new(user_params)
+    if @user.save
+      redirect_to @user, notice: "User successfully created."
+     else
+      render :new, alert: @user.errors.full_messages
     end
   end
 
- def user_params
-    params.require(:user).permit(:name, :surname, :password, :role_id)
+  def edit; end
+
+  def update
+    if @user.update(user_params)
+       redirect_to @user
+     else
+      render :edit, alert: @user.errors.full_messages
+    end
+  end
+
+  def set_user
+    @user = User.find_by(id: params[:id])
+
+    return redirect_to root_path, alert: "this not a valid user" if @user.nil?
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :surname, :email, :password, :role_id)
  end
 end
