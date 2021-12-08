@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       render :edit, alert: @user.errors.full_messages
     end
   end
-    def destroy
+  def destroy
     @user.destroy
     redirect_to users_path
   end

@@ -1,5 +1,5 @@
 <h3>Article Info:</h3>
-<table class="table table-sm">
+<table class="table table-bordered table-sm ">
   <thead class="thead-dark">
     <tr>
       <th scope="col">Article Title</th>
@@ -10,28 +10,26 @@
     <tr>
       <td><%= @article.title %></td>
       <td><%= @article.body %></td>
-    </tr>
-    <tr>
-      <th>Comments </th>
-      <td><%= render @article.comments %></td>
-    </tr>
-   <tr>
-     <button type="button" class="btn btn-secondary"><%=
-      link_to "Destroy", article_path(@article),
-      method: :delete,
-      data: { confirm: "Are you sure?" }%>
-      </button>
-    </tr>
-    <tr>
-     <button type="button" class="btn btn-secondary">
-        <%= link_to "Edit", edit_article_path(@article) %>
-      </button>
-    </tr>
-    <tr>
 
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+        <button type="button" class="btn btn-warning">
+          <%= link_to "Edit", edit_article_path(@article) %>
+        </button>
+        <button type="button" class="btn btn-danger">
+          <%= link_to "Destroy", article_path(@article),
+          method: :delete,
+          data: { confirm: "Are you sure?" }%>
+       </button>
+     </td>
     </tr>
   </tbody>
 </table>
+
+<h3>Comments Info:</h3>
+
+<%= render @article.comments %>
 
 
 <h2>add a comment:</h2>
