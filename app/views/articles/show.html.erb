@@ -10,14 +10,11 @@
     <tr>
       <td><%= @article.title %></td>
       <td><%= @article.body %></td>
-
-    </tr>
-    <tr>
-      <td colspan="2" align="center">
-        <button type="button" class="btn btn-warning">
+      <td align="center">
+        <button type="button" class="btn btn-outline-warning">
           <%= link_to "Edit", edit_article_path(@article) %>
         </button>
-        <button type="button" class="btn btn-danger">
+        <button type="button" class="btn btn-outline-danger">
           <%= link_to "Destroy", article_path(@article),
           method: :delete,
           data: { confirm: "Are you sure?" }%>
