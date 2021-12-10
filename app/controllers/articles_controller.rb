@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     if @article.save
-      redirect_to @article, notice: "article is saved"
+      redirect_to @article
      else
       render :new
     end
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article
     else
-      render :edit
+      render edit
     end
   end
 

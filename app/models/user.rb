@@ -5,7 +5,7 @@ class User < ApplicationRecord
  belongs_to :role
  after_initialize :default_role
 
-  private
+ private
 
   def default_role
     if self.role.blank?
