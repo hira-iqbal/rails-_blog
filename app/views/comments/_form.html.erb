@@ -9,7 +9,7 @@
   </div>
   <div  class="form-group col-md-4">
    <%= form.label :status%>
-   <%= form.select(:status, Article::STATUSES.map {|e|[e.camelize, e.downcase]},{include_blank: "please select a status"}, {class: "form-control"} ) %>
+   <%= form.select(:status, status_options,{include_blank: "please select a status"}, {class: "form-control"} ) %>
   </div>
 
   <div  class="form-group col-md-4">
