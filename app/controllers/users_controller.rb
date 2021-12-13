@@ -31,6 +31,7 @@ class UsersController < ApplicationController
       render :edit, alert: @user.errors.full_messages
     end
   end
+
   def destroy
     @user.destroy
     redirect_to users_path
@@ -44,5 +45,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :surname, :email, :password, :role_id)
- end
+  end
 end

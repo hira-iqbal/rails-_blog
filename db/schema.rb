@@ -30,14 +30,6 @@ ActiveRecord::Schema.define(version: 2021_11_29_112149) do
     t.index ["article_id"], name: "index_comments_on_article_id"
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "name"
-    t.string "title"
-    t.text "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -57,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_112149) do
     t.integer "role_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "comments", "articles"

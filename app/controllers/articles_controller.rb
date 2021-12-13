@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
     if @article.save
       redirect_to @article, notice: "article is saved"
      else
-      render :new
+      render :new, alert: @article.errors.full_messages
     end
   end
 
@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article
     else
-      render :edit
+      render :edit, alert: @article.errors.full_messages
     end
   end
 
@@ -46,7 +46,6 @@ class ArticlesController < ApplicationController
       redirect_to articles_path, alert: "You cannot edit a public or a private article"
     end
   end
-
 
   def article_params
     params.require(:article).permit(:title, :body, :status)
