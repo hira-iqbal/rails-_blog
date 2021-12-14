@@ -2,8 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
- belongs_to :role
- after_initialize :default_role
+  belongs_to :role
+  after_initialize :default_role
 
   private
 

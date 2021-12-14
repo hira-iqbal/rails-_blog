@@ -1,14 +1,17 @@
 class CommentsController < ApplicationController
   http_basic_authenticate_with name: "adha", password: "security", only: [:destroy]
   before_action :find_article
+  after_action :verify_authorized
 
   def create
     @comment = @article.comments.create(comment_params)
+    authorize  @comment
     redirect_to article_path(@article)
   end
 
   def destroy
     @comment = @article.comments.find(params[:id])
+    authorize  @comment
     @comment.destroy
     redirect_to article_path(@article)
   end
@@ -21,5 +24,6 @@ class CommentsController < ApplicationController
 
   def find_article
     @article = Article.find(params[:article_id])
+
   end
 end

@@ -6,7 +6,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @users = User.includes(:role) %>
+
     <% @users.each do |user|%>
       <tr>
         <td><%= link_to user.name, user%></td>
