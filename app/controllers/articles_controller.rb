@@ -29,7 +29,7 @@ class ArticlesController < ApplicationController
   def update
     if @article.update(article_params)
       redirect_to @article
-    else
+     else
       render :edit, alert: @article.errors.full_messages
     end
   end
@@ -43,9 +43,11 @@ class ArticlesController < ApplicationController
 
   def set_article
     @article = Article.archived.find_by(id: params[:id])
-    authorize @article
+
     if @article.nil?
-      redirect_to articles_path, alert: "You cannot edit a public or a private article"
+      redirect_to articles_path, alert: "You cannot edit an archived article"
+    else
+      authorize @article
     end
   end
 
