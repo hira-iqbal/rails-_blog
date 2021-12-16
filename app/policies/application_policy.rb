@@ -7,7 +7,6 @@ class ApplicationPolicy
     @record = record
   end
 
-
   class Scope
     def initialize(user, scope)
       raise Pundit::NotAuthorizedError, "must be logged in" unless user

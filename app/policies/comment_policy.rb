@@ -2,13 +2,13 @@ class CommentPolicy < ApplicationPolicy
 
   def create?
    set_role
- end
+  end
 
- def destroy?
+  def destroy?
    set_role
- end
+  end
 
- def set_role
+  def set_role
   user.role.name == "commenter" || user.role.name == "admin"
-end
+  end
 end

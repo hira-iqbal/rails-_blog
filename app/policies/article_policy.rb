@@ -1,4 +1,4 @@
-  class ArticlePolicy < ApplicationPolicy
+class ArticlePolicy < ApplicationPolicy
   def index?
     user_is_admin? || user_is_moderator?|| user_is_editor? || user_is_commenter?
   end
@@ -26,8 +26,7 @@
   def destroy?
     user_is_admin?
   end
-
-  def user_is_admin?
+    def user_is_admin?
     user.role.name == "admin"
   end
 
@@ -42,4 +41,4 @@
   def user_is_editor?
     user.role.name == "editor"
   end
-  end
+end

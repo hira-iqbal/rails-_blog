@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
-  after_action :verify_authorized, except: :index
+  before_action :verify_authorized, except: :index
 
   def index
     @articles = Article.ordered

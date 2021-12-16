@@ -4,6 +4,3 @@ module ApplicationHelper
     Article::STATUSES.map {|e|[e.camelize, e.downcase]}
   end
 end
-
-
-

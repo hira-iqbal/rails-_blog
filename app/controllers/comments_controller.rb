@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   http_basic_authenticate_with name: "adha", password: "security", only: [:destroy]
   before_action :find_article
-  after_action :verify_authorized
+  before_action :verify_authorized
 
   def create
     @comment = @article.comments.create(comment_params)
