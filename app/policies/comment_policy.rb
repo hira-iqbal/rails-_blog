@@ -1,14 +1,9 @@
 class CommentPolicy < ApplicationPolicy
 
   def create?
-   set_role
+    user.is_admin? || user.is_moderator? || user.is_editor? || user.is_commenter?
   end
-
   def destroy?
-   set_role
-  end
-
-  def set_role
-  user.role.name == "commenter" || user.role.name == "admin"
+    user.is_admin? || user.is_commenter?
   end
 end

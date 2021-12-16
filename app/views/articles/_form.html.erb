@@ -20,6 +20,12 @@
     <%= form.select(:status, status_options,{include_blank: "please select a status"}, {class: "form-control"} ) %>
   </div><br>
 
+  <div class="form-group col-md-4">
+    <%= f.fields_for :image, resource.build_image do |image_subform| %>
+      <%= image_subform.file_field :image %>
+    <% end %>
+  </div>
+
   <div>
     <%= form.submit class: "btn btn-primary" %>
   </div>

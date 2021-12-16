@@ -1,5 +1,7 @@
 class Article < ApplicationRecord
   include Visible
+  has_many :images, as: :imageable
+  accepts_nested_attributes_for :images
   has_many :comments, dependent: :destroy
 
   validates :title, presence: true

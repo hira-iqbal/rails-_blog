@@ -16,6 +16,12 @@
       <%= form.text_field :email, readonly: admin, class: "form-control",placeholder: "Email" %><br><br>
     </div>
 
+    <div class="form-group col-md-4">
+      <%= f.fields_for :image, resource.build_image do |image_subform| %>
+      <%= image_subform.file_field :image %>
+      <% end %>
+    </div>
+
     <div class= "form-group col-md-4">
       <%= form.label :password %>
       <%= form.password_field :password, class: "form-control", placeholder: "Password"%><br><br>

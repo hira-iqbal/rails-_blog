@@ -1,11 +1,15 @@
 class User < ApplicationRecord
+
+  has_one :image, as: :imageable
+  accepts_nested_attributes_for :image
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   belongs_to :role
   after_initialize :default_role
 
-def is_admin?
+  def is_admin?
     role.name == "admin"
   end
 
@@ -20,7 +24,6 @@ def is_admin?
   def is_editor?
     role.name == "editor"
   end
-
 
   private
 

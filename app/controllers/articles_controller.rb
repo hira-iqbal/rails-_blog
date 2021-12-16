@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   before_action :verify_authorized, except: :index
 
   def index
-    @articles = Article.ordered
+    @articles = Article.includes(:images)
   end
 
   def show; end
@@ -52,6 +52,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :body, :status)
+    params.require(:article).permit(:title, :body, :status, images_attributes: [:id, :image])
   end
 end
