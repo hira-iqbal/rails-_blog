@@ -21,9 +21,8 @@
   </div><br>
 
   <div class="form-group col-md-4">
-    <%= f.fields_for :image, resource.build_image do |image_subform| %>
-      <%= image_subform.file_field :image %>
-    <% end %>
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
   </div>
 
   <div>

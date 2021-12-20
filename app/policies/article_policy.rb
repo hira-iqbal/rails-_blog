@@ -1,7 +1,8 @@
 class ArticlePolicy < ApplicationPolicy
 
-  def index?
-    user.is_admin? || user.is_moderator?|| user.is_editor? || user.is_commenter?
+  def initialize(user, record)
+    @user = user
+    @record = record
   end
 
   def new?

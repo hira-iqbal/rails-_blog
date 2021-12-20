@@ -11,19 +11,19 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = @article.comments.find(params[:id])
-    authorize  @comment
     @comment.destroy
+    authorize  @comment
     redirect_to article_path(@article)
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:commenter, :body, :status, image_attributes: [:id, :image])
+    params.require(:comment).permit(:commenter, :body, :status, images:[])
   end
 
   def find_article
-    @article = Article.find(params[:article_id], images_attributes: [:id, :image])
-
+    @article = Article.find(params[:article_id])
   end
 end
+# continue...

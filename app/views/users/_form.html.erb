@@ -17,9 +17,11 @@
     </div>
 
     <div class="form-group col-md-4">
-      <%= f.fields_for :image, resource.build_image do |image_subform| %>
-      <%= image_subform.file_field :image %>
+      <% if user.image.attached? %>
+       <%= image_tag user.image, style: "width:100px", height:"100px" %>
       <% end %>
+      <%= form.label :image %>
+      <%= form.file_field :image, class:"form-group"%>
     </div>
 
     <div class= "form-group col-md-4">

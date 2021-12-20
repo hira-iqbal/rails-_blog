@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show,:edit,:update, :destroy]
 
   def index
-    @users = User.includes(:role, :image)
+    @users = User.includes(:role)
   end
 
   def new
@@ -46,6 +46,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :surname, :email, :password, :role_id)
+    params.require(:user).permit(:name, :surname, :email, :password, :role_id, :image)
   end
 end

@@ -1,7 +1,6 @@
 class User < ApplicationRecord
 
-  has_one :image, as: :imageable
-  accepts_nested_attributes_for :image
+  has_one_attached :image
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
