@@ -10,6 +10,11 @@
    <%= form.text_area :body,class:"form-control" %>
   </div>
 
+  <div class="form-group col-md-4">
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
+
   <div  class="form-group col-md-4">
    <%= form.label :status%>
    <%= form.select(:status, status_options,{include_blank: "please select a status"}, {class: "form-control"} ) %>

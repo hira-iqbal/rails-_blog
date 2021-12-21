@@ -6,13 +6,15 @@
       <th scope="col">Role</th>
     </tr>
   </thead>
+
   <tbody>
     <tr>
       <td><%= @user.name %></td>
       <td><%= @user.surname %></td>
       <td><%= @user.role.name %></td>
-      <td><%= image_tag(@user.image)%></td>
+      <td><%= image_tag(@user.image) %></td>
     </tr>
+
     <tr>
       <td colspan="3">
         <button type="button" class="btn btn-outline-danger">
