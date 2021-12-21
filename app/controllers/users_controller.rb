@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
- before_action :authenticate_user!
- before_action :ensure_admin
- before_action :set_user, only: [:show,:edit,:update]
+  before_action :authenticate_user!
+  before_action :ensure_admin
+  before_action :set_user, only: [:show,:edit,:update, :destroy]
 
   def index
-     @users = User.all
+    @users = User.includes(:role)
   end
 
   def new
@@ -26,19 +26,26 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-       redirect_to @user
+      redirect_to @user
      else
       render :edit, alert: @user.errors.full_messages
     end
   end
 
+  def destroy
+    if @user.destroy
+      redirect_to users_path, notice: "User Deleted"
+     else
+      redirect_to root_path, alert: @user.errors.full_messages
+    end
+  end
+
   def set_user
     @user = User.find_by(id: params[:id])
-
     return redirect_to root_path, alert: "this not a valid user" if @user.nil?
   end
 
   def user_params
-    params.require(:user).permit(:name, :surname, :email, :password, :role_id)
- end
+    params.require(:user).permit(:name, :surname, :email, :password, :role_id, :image)
+  end
 end

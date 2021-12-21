@@ -1,9 +1,20 @@
-<p>
-<strong>Commenter:</strong>
-<%= comment.commenter %>
-<strong>Comment:</strong>
-<%= comment.body %>
-</p>
-<p>
-  <%= link_to 'Destroy Comment', [comment.article, comment],method: :delete, data: { confirm: "Are you sure?" } %>
-</p>
+<table class="table table-bordered table-sm ">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Commenter</th>
+      <th scope="col">Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= comment.commenter %></td>
+      <td><%= comment.body %></td>
+      <td align="center">
+        <button type="button" class="btn btn-outline-danger">
+          <%= link_to ' Destroy Comment', [comment.article, comment],
+          method: :delete, data: { confirm: "Are you sure?" } %>
+        </button>
+      </td>
+    </tr>
+</tbody>
+</table>

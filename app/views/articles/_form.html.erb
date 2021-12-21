@@ -1,26 +1,31 @@
 <%= form_with model: @article do |form| %>
-  <div>
+  <div class= "form-group col-md-4">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title , class:"form-control" %>
     <% @article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
+    <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class= "form-group col-md-4">
+    <%= form.label :body %>
+    <%= form.text_area :body, class: "form-control" %>
+    <% @article.errors.full_messages_for(:body).each do |message| %>
+    <div><%= message %></div>
     <% end %>
   </div><br>
 
-  <div>
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-    <% @article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
-   <% end %>
-  </div><br>
-
-  <div>
+  <div class="form-group col-md-4">
     <%= form.label :status %>
-     <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+    <%= form.select(:status, status_options,{include_blank: "please select a status"}, {class: "form-control"} ) %>
   </div><br>
 
-  <div>
-    <%= form.submit %>
+  <div class="form-group col-md-4">
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
   </div>
-<%end%>
+
+  <div>
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

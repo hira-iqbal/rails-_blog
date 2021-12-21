@@ -1,0 +1,27 @@
+<table class="table table-bordered ">
+  <thead>
+    <tr>
+      <th scope="col">User Name</th>
+       <th scope="col">User Role</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <% @users.each do |user|%>
+      <tr>
+        <td><%= link_to user.name, user%></td>
+        <td><%= user.role.name %></td>
+        <td>
+          <button type="button" class="btn btn-outline-warning"><%= link_to "Edit User", edit_user_path(user)%>
+          </button>
+        </td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="3">
+        <button type="button" class="btn btn-outline-secondary"><%= link_to "Create New User", new_user_path %>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

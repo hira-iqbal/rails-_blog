@@ -5,7 +5,7 @@ class RolesController < ApplicationController
     if @role.save
       redirect_to @role, notice: "Role is saved successfully."
     else
-      render :new
+      render :new, alert: @role.errors.full_messages
     end
   end
 

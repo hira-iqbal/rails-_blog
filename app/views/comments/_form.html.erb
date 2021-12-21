@@ -1,18 +1,21 @@
-<%= form_with model: [@article,@article.comments.build] do |form| %>
- <p>
-   <%= form.label :commenter %> 
-   <%= form.text_field :commenter %>
- </p>
- <p>
-   <%= form.label :body %>
-   <%= form.text_area :body %>
- </p>
- <p>
-   <%= form.label :status %>
-   <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
- </p>
+<%= form_with model: [@article, @article.comments.build] do |form| %>
 
- <p>
-   <%= form.submit %>
- </p>
+  <div class= "form-group col-md-4">
+   <%= form.label :commenter %> 
+   <%= form.text_field :commenter,class:"form-control" %>
+  </div>
+
+  <div class="form-group col-md-4">
+   <%= form.label :body %>
+   <%= form.text_area :body,class:"form-control" %>
+  </div>
+
+  <div  class="form-group col-md-4">
+   <%= form.label :status%>
+   <%= form.select(:status, status_options,{include_blank: "please select a status"}, {class: "form-control"} ) %>
+  </div>
+
+  <div  class="form-group col-md-4">
+   <%= form.submit class:"form-control" %>
+  </div>
 <% end %>
