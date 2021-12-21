@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.archived.find_by(id: params[:id])
+    @article = Article.not_archived.find_by(id: params[:id])
 
     if @article.nil?
       redirect_to articles_path, alert: "You cannot edit an archived article"
