@@ -18,12 +18,12 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    authorize @article
     if @article.save
        redirect_to @article, notice: "article is saved"
      else
       render :new, alert: @article.errors.full_messages
     end
-    authorize @article
   end
 
   def update
