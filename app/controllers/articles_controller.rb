@@ -21,38 +21,38 @@ class ArticlesController < ApplicationController
     authorize @article
     if @article.save
      redirect_to @article, notice: "article is saved"
-   else
-    render :new, alert: @article.errors.full_messages
+     else
+      render :new, alert: @article.errors.full_messages
+    end
   end
-end
 
-def update
-  if @article.update(article_params)
-    redirect_to @article
-    authorize @article
-  else
-    render :edit, alert: @article.errors.full_messages
+  def update
+    if @article.update(article_params)
+      redirect_to @article
+      authorize @article
+    else
+      render :edit, alert: @article.errors.full_messages
+    end
   end
-end
 
-def destroy
-  @article.destroy
-  redirect_to articles_path
-  authorize @article
-end
-
-private
-
-def set_article
-  @article = Article.not_archived.find_by(id: params[:id])
-  if @article.nil?
-    redirect_to articles_path, alert: "You cannot edit an archived article"
-  else
+  def destroy
+    @article.destroy
+    redirect_to articles_path
     authorize @article
   end
-end
 
-def article_params
-  params.require(:article).permit(:title, :body, :status, images:[])
-end
+  private
+
+  def set_article
+    @article = Article.not_archived.find_by(id: params[:id])
+    if @article.nil?
+      redirect_to articles_path, alert: "You cannot edit an archived article"
+    else
+      authorize @article
+    end
+  end
+
+  def article_params
+    params.require(:article).permit(:title, :body, :status, images:[])
+  end
 end

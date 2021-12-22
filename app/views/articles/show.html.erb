@@ -12,11 +12,7 @@
     <tr>
       <td><%= @article.title %></td>
       <td><%= @article.body %></td>
-      <td>
-        <% @article.images.each do |image| %>
-        <%= image_tag image, height: "200px", width: "200px" %>
-        <% end %>
-      </td>
+      <td><%= render 'display_images', images: @article.images %></td>
       <td><%= @article.user.name %></td>
       <td align="center">
         <button type="button" class="btn btn-outline-warning">
