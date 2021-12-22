@@ -4,6 +4,7 @@
       <th scope="col">User Name</th>
       <th scope="col">Surname</th>
       <th scope="col">Role</th>
+      <th scope="col">User Image</th>
     </tr>
   </thead>
 
@@ -12,11 +13,10 @@
       <td><%= @user.name %></td>
       <td><%= @user.surname %></td>
       <td><%= @user.role.name %></td>
-      <td><%= image_tag(@user.image) %></td>
+      <td><%= image_tag(@user.image, height:"100px", width:"100px") if @user.image.present? %></td>
     </tr>
-
     <tr>
-      <td colspan="3">
+      <td colspan="4">
         <button type="button" class="btn btn-outline-danger">
           <%= link_to "Destroy user", user_path(@user),method: :delete, data: { confirm: "Are you sure?" } %>
         </button>
