@@ -3,6 +3,8 @@
     <tr>
       <th scope="col">Commenter</th>
       <th scope="col">Comment</th>
+      <th scope="col">Image</th>
+      <th scope="col">commenter Name</th>
     </tr>
   </thead>
   <tbody>
@@ -14,6 +16,7 @@
         <%= image_tag image, height: "200px", width: "200px" %>
         <% end %>
       </td>
+      <td><%= comment.user.name%></td>
 
       <td>
         <button type="button" class="btn btn-outline-danger">

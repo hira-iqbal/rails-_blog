@@ -5,6 +5,7 @@
       <th scope="col">Article Title</th>
       <th scope="col">Article Body</th>
       <th scope="col">Article image</th>
+      <th scope="col">User Name</th>
     </tr>
   </thead>
   <tbody>
@@ -12,10 +13,11 @@
       <td><%= @article.title %></td>
       <td><%= @article.body %></td>
       <td>
-      <% @article.images.each do |image| %>
+        <% @article.images.each do |image| %>
         <%= image_tag image, height: "200px", width: "200px" %>
-       <% end %>
+        <% end %>
       </td>
+      <td><%= @article.user.name %></td>
       <td align="center">
         <button type="button" class="btn btn-outline-warning">
           <%= link_to "Edit", edit_article_path(@article) %>
@@ -24,8 +26,8 @@
           <%= link_to "Destroy", article_path(@article),
           method: :delete,
           data: { confirm: "Are you sure?" } %>
-       </button>
-     </td>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
