@@ -24,8 +24,7 @@
   </div>
 
   <div class="form-group col-md-4">
-    <%= image_tag user.image, style: "width:200px", height:"100px", if user.image.attached? %>
-    <% end %>
+    <%= image_tag user.image, style: "width:200px", height:"100px" if user.image.attached? %>
     <%= form.label :image %>
     <%= form.file_field :image, class:"form-group" %>
   </div>
