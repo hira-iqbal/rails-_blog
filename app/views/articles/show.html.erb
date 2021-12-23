@@ -5,27 +5,25 @@
       <th scope="col">Article Title</th>
       <th scope="col">Article Body</th>
       <th scope="col">Article image</th>
+      <th scope="col">User Name</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><%= @article.title %></td>
       <td><%= @article.body %></td>
-      <td>
-      <% @article.images.each do |image| %>
-        <%= image_tag image, height: "200px", width: "200px" %>
-       <% end %>
-      </td>
+      <td><%= render 'display_images', images: @article.images %></td>
+      <td><%= @article.user.name %></td>
       <td align="center">
         <button type="button" class="btn btn-outline-warning">
-          <%= link_to "Edit", edit_article_path(@article) %>
+          <%= link_to("Edit", edit_article_path(@article)) %>
         </button>
         <button type="button" class="btn btn-outline-danger">
-          <%= link_to "Destroy", article_path(@article),
+          <%= link_to("Destroy", article_path(@article),
           method: :delete,
-          data: { confirm: "Are you sure?" }%>
-       </button>
-     </td>
+          data: { confirm: "Are you sure?" }) %>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -35,6 +33,3 @@
 
 <h2> create a comment:</h2>
 <%= render 'comments/form' %>
-
-
-

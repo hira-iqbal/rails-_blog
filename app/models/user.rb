@@ -1,9 +1,11 @@
 class User < ApplicationRecord
 
-  has_one_attached :image
+  acts_as_paranoid
 
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  has_one_attached :image
+  has_many :comments
+  has_many :articles
+  devise :database_authenticatable, :registerable,:recoverable, :rememberable, :validatable
 
   belongs_to :role
   after_initialize :default_role

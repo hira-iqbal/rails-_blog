@@ -1,20 +1,22 @@
 <table class="table table-bordered table-sm ">
   <thead class="thead-light">
     <tr>
-      <th scope="col">Commenter</th>
       <th scope="col">Comment</th>
+      <th scope="col">Image</th>
+      <th scope="col">commenter Name</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><%= comment.commenter %></td>
       <td><%= comment.body %></td>
-      <td align="center">
+      <td><%= render 'display_images', images: comment.images %></td>
+      <td><%= comment.user.name %></td>
+      <td>
         <button type="button" class="btn btn-outline-danger">
-          <%= link_to ' Destroy Comment', [comment.article, comment],
-          method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= link_to(' Destroy Comment', [comment.article, comment],
+          method: :delete, data: { confirm: "Are you sure?" }) %>
         </button>
       </td>
     </tr>
-</tbody>
+  </tbody>
 </table>

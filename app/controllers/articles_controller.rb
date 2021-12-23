@@ -17,10 +17,10 @@ class ArticlesController < ApplicationController
   def edit; end
 
   def create
-    @article = Article.new(article_params)
+    @article = current_user.articles.new(article_params)
+    authorize @article
     if @article.save
-      redirect_to @article, notice: "article is saved"
-      authorize @article
+     redirect_to @article, notice: "article is saved"
      else
       render :new, alert: @article.errors.full_messages
     end
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to @article
       authorize @article
-     else
+    else
       render :edit, alert: @article.errors.full_messages
     end
   end
@@ -44,8 +44,7 @@ class ArticlesController < ApplicationController
   private
 
   def set_article
-    @article = Article.archived.find_by(id: params[:id])
-
+    @article = Article.not_archived.find_by(id: params[:id])
     if @article.nil?
       redirect_to articles_path, alert: "You cannot edit an archived article"
     else

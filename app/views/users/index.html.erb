@@ -7,19 +7,19 @@
   </thead>
   <tbody>
 
-    <% @users.each do |user|%>
+    <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user.name, user%></td>
+        <td><%= link_to(user.name, user) %></td>
         <td><%= user.role.name %></td>
         <td>
-          <button type="button" class="btn btn-outline-warning"><%= link_to "Edit User", edit_user_path(user)%>
+          <button type="button" class="btn btn-outline-warning"><%= link_to("Edit User", edit_user_path(user)) %>
           </button>
         </td>
       </tr>
     <% end %>
     <tr>
       <td colspan="3">
-        <button type="button" class="btn btn-outline-secondary"><%= link_to "Create New User", new_user_path %>
+        <button type="button" class="btn btn-outline-secondary"><%= link_to("Create New User", new_user_path) %>
         </button>
       </td>
     </tr>

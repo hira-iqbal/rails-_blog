@@ -10,26 +10,25 @@
       <%= form.text_field :surname, class: "form-control", placeholder: "Surname" %><br><br>
     </div>
   </div>
+
   <div class= "form-row">
     <div class= "form-group col-md-4">
       <%= form.label :email %>
       <%= form.text_field :email, readonly: admin, class: "form-control",placeholder: "Email" %><br><br>
     </div>
 
-    <div class="form-group col-md-4">
-      <% if user.image.attached? %>
-       <%= image_tag user.image, style: "width:100px", height:"100px" %>
-      <% end %>
-      <%= form.label :image %>
-      <%= form.file_field :image, class:"form-group"%>
-    </div>
-
     <div class= "form-group col-md-4">
       <%= form.label :password %>
-      <%= form.password_field :password, class: "form-control", placeholder: "Password"%><br><br>
+      <%= form.password_field :password, class: "form-control", placeholder: "Password" %><br><br>
     </div>
   </div>
-
+  <% if current_user == @user %>
+    <div class="form-group col-md-4">
+      <%= image_tag user.image, style: "width:200px", height:"100px" if user.image.attached? %>
+      <%= form.label :image %>
+      <%= form.file_field :image, readonly: admin, class:"form-group" %>
+    </div>
+  <% end %>
   <div class= "form-group col-md-4">
     <%= form.label :role_id %>
     <%= form.collection_select :role_id, Role.order(:name), :id, :name, {include_blank:""}, {class: "form-control"} %>
