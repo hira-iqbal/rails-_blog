@@ -1,7 +1,6 @@
 <table class="table table-bordered table-sm ">
   <thead class="thead-light">
     <tr>
-      <th scope="col">Commenter</th>
       <th scope="col">Comment</th>
       <th scope="col">Image</th>
       <th scope="col">commenter Name</th>
@@ -9,7 +8,6 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= comment.commenter %></td>
       <td><%= comment.body %></td>
       <td><%= render 'display_images', images: comment.images %></td>
       <td><%= comment.user.name %></td>
