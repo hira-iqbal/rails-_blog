@@ -5,9 +5,11 @@ class CommentsController < ApplicationController
   def create
     @comment = @article.comments.new(comment_params)
     @comment.user = current_user
-    @comment.save
-    redirect_to article_path(@article)
-    authorize  @comment
+    if @comment.save
+      UserMailer.with(user: @article.user, comment: @comment, commenter_user: @comment.user).notify_user.deliver_now
+      redirect_to article_path(@article)
+      authorize  @comment
+    end
   end
 
   def destroy
