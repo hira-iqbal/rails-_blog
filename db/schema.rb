@@ -61,15 +61,6 @@ ActiveRecord::Schema.define(version: 2021_12_22_130407) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "images", force: :cascade do |t|
-    t.string "image"
-    t.string "imageable_type", null: false
-    t.integer "imageable_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable"
-  end
-
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false

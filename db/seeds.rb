@@ -20,3 +20,35 @@ if !User.where(role_id: admin_role.id).any?
   user.password_confirmation = "12345678"
   user.save
 end
+                  
+moderator_role = Role.moderator.first
+
+if !User.where(role_id: moderator_role.id).any?
+  user = User.new(role: moderator_role)
+  user.name = "Hira"
+  user.surname = "xyz"
+  user.email = "moderator@gmail.com"
+  user.password = "12345678"
+  user.password_confirmation = "12345678"
+  user.save
+end
+
+editor_role = Role.editor.first
+
+if !User.where(role_id: editor_role.id).any?
+  user = User.new(role: editor_role)
+  user.name = "Hira23"
+  user.surname = "abc"
+  user.email = "editor@gmail.com"
+  user.password = "12345678"
+  user.password_confirmation = "12345678"
+  user.save
+end
+
+user = User.new
+user.name = "Hira23"
+user.surname = "abc"
+user.email = "commenter@gmail.com"
+user.password = "12345678"
+user.password_confirmation = "12345678"
+user.save
