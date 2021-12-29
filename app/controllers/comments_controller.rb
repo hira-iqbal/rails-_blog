@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = @article.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      UserMailer.with(user: @article.user, comment: @comment, commenter_user: @comment.user).notify_user.deliver_now
+      UserMailer.with(user: @article.user, comment: @comment, commenter_user: @comment.user, article:@article).notify_user.deliver_later
       redirect_to article_path(@article)
       authorize  @comment
     end
