@@ -96,7 +96,7 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.action_mailer.default_url_options = { :host => 'localhost' }
+  config.action_mailer.default_url_options = { :host => 'https://frozen-cove-31542.herokuapp.com' }
 
 
   # Inserts middleware to perform automatic connection switching.
