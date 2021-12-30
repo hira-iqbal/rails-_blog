@@ -1,3 +1,5 @@
+User.with_deleted.map(&:destroy_fully!)
+
 roles_list = [
   { name: 'admin', created_at: Time.now, updated_at: Time.now},
   { name: 'moderator', created_at: Time.now, updated_at: Time.now},
