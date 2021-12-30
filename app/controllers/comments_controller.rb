@@ -1,14 +1,16 @@
 class CommentsController < ApplicationController
   before_action :find_article
-  after_action :verify_authorized
 
   def create
     @comment = @article.comments.new(comment_params)
     @comment.user = current_user
+    authorize  @comment
+
     if @comment.save
-      UserMailer.with(user: @article.user, comment: @comment, commenter_user: @comment.user, article: @article).notify_user.deliver_later
+      UserMailer.with(comment: @comment, article: @article).notify_user.deliver_later
       redirect_to article_path(@article)
-      authorize  @comment
+    else
+      redirect_to @article, alert: @comment.errors.full_messages.to_sentence
     end
   end
 

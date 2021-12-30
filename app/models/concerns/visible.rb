@@ -4,7 +4,7 @@ module Visible
   STATUSES = ['public', 'private', 'archived']
 
   included do
-    validates :status, inclusion: { in: STATUSES }
+    validates :status, inclusion: { in: STATUSES }, allow_blank: true
   end
 
   def archived?
