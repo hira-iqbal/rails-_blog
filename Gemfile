@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
-ruby '2.6.5'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+gem 'dotenv-rails', groups: [:development, :test]
+ruby '2.6.5'
+gem 'dotenv-rails', groups: [:development, :test]
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use postgresql as the database for Active Record
