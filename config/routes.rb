@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/admin/sidekiq'
+  
   get 'session/new'
   devise_for :users
   root "articles#index"

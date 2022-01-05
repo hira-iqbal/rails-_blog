@@ -17,6 +17,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       redirect_to @user, notice: "User successfully created."
+      UserMailer.with(user: @user).update_password.deliver_later
+      Rock::HardWorker.perform_async(@user.id)
      else
       render :new, alert: @user.errors.full_messages
     end
