@@ -6,11 +6,6 @@ class UserMailer < ApplicationMailer
     mail(to: @article.user.email, subject: "#{@comment.user.email} commeneted on your article")
   end
 
-  def update_password
-    @user = params[:user]
-    mail(to: @user.email, subject: "notification")
-  end
-
   def login_reminder
     @user = params[:user]
     mail(to: @user.email, subject: "login reminder")
