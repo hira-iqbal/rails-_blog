@@ -10,4 +10,9 @@ class UserMailer < ApplicationMailer
     @user = params[:user]
     mail(to: @user.email, subject: "notification")
   end
+
+  def login_reminder
+    @user = params[:user]
+    mail(to: @user.email, subject: "login reminder")
+  end
 end

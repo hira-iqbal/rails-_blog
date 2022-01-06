@@ -1,0 +1,4 @@
+login_reminder_worker:
+  cron: " 30 18 ? * MON-SUN"
+  class: "LoginReminderWorker"
+  queue: default
