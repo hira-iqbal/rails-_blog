@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   after_action :verify_authorized, except: :index
 
   def index
-    @articles = Article.includes(images_attachments: :blob)
+    @pagy, @articles = pagy(Article.includes(images_attachments: :blob))
   end
 
   def show; end
