@@ -58,5 +58,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '4.8.0'
 gem 'pundit', '2.1.1'
 gem 'acts_as_paranoid', '0.8.0'
-gem 'sidekiq'
-gem 'sidekiq-cron'
+gem 'sidekiq', '6.3.1'
+gem 'sidekiq-cron', '1.2.0'
+gem 'pagy', '5.6.10'

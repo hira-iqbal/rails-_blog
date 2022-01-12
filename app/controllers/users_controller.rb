@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show,:edit,:update, :destroy]
 
   def index
-    @users = User.includes(:role, :articles)
+    @pagy, @users = pagy(User.includes(:role, :articles))
   end
 
   def new
