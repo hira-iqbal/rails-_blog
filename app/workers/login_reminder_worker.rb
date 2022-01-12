@@ -1,5 +1,3 @@
-require 'sidekiq-scheduler'
-
 class LoginReminderWorker
   include Sidekiq::Worker
   sidekiq_options retry: false
